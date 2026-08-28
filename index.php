@@ -1,9 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registration</title>
+    <title>Login Application</title>
     <style>
         * {
             margin: 0;
@@ -13,7 +11,7 @@
         
         body {
             font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -25,7 +23,7 @@
             padding: 40px;
             border-radius: 10px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            width: 450px;
+            width: 400px;
         }
         
         h2 {
@@ -36,13 +34,13 @@
         }
         
         fieldset {
-            border: 2px solid #f5576c;
+            border: 2px solid #667eea;
             border-radius: 8px;
-            padding: 25px;
+            padding: 20px;
         }
         
         legend {
-            color: #f5576c;
+            color: #667eea;
             font-weight: bold;
             font-size: 18px;
             padding: 0 10px;
@@ -59,29 +57,26 @@
             margin-bottom: 5px;
         }
         
-        input[type="text"],
         input[type="email"],
         input[type="password"] {
             width: 100%;
-            padding: 12px;
+            padding: 10px;
             border: 2px solid #ddd;
             border-radius: 5px;
             font-size: 14px;
             transition: border-color 0.3s;
-            box-sizing: border-box;
         }
         
-        input[type="text"]:focus,
         input[type="email"]:focus,
         input[type="password"]:focus {
-            border-color: #f5576c;
+            border-color: #667eea;
             outline: none;
         }
         
-        .btn-register {
+        .btn-login {
             width: 100%;
             padding: 12px;
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             border: none;
             border-radius: 5px;
@@ -91,27 +86,27 @@
             transition: transform 0.2s;
         }
         
-        .btn-register:hover {
+        .btn-login:hover {
             transform: scale(1.02);
         }
         
-        .login-link {
+        .register-link {
             text-align: center;
             margin-top: 15px;
             color: #555;
         }
         
-        .login-link a {
-            color: #f5576c;
+        .register-link a {
+            color: #667eea;
             text-decoration: none;
             font-weight: bold;
         }
         
-        .login-link a:hover {
+        .register-link a:hover {
             text-decoration: underline;
         }
         
-    
+        
         .alert {
             padding: 12px 15px;
             border-radius: 5px;
@@ -120,7 +115,6 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            animation: slideDown 0.5s ease;
         }
         
         .alert-error {
@@ -135,8 +129,26 @@
             border: 2px solid #c3e6cb;
         }
         
+        .alert-warning {
+            background: #fff3cd;
+            color: #856404;
+            border: 2px solid #ffeeba;
+        }
+        
+        .alert-info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 2px solid #bee5eb;
+        }
+        
+       
         .alert-icon {
             font-size: 20px;
+        }
+        
+      
+        .alert {
+            animation: slideDown 0.5s ease;
         }
         
         @keyframes slideDown {
@@ -151,51 +163,46 @@
         }
     </style>
 </head>
-<body>
+<body>   
     <div class="container">
-        <h2> Registration</h2>
+        <h2> Login Application</h2>
         
         <fieldset>
-            <legend>Register Here...</legend>
+            <legend>Login Here...</legend>
             
-            <?php 
-            
-            if (isset($_GET['error'])) {
-                echo '<div class="alert alert-error">';
-                echo '<span class="alert-icon"></span>';
-                echo '<span>' . htmlspecialchars($_GET['error']) . '</span>';
-                echo '</div>';
-            }
-            
-            
-            if (isset($_GET['success'])) {
-                echo '<div class="alert alert-success">';
-                echo '<span class="alert-icon"></span>';
-                echo '<span>' . htmlspecialchars($_GET['success']) . '</span>';
-                echo '</div>';
-            }
-            ?>
+           <?php 
 
+if (isset($_GET['error'])) {
+    echo '<div class="alert alert-error">';
+    echo '<span class="alert-icon"></span>';
+    echo '<span>' . htmlspecialchars($_GET['error']) . '</span>';
+    echo '</div>';
+}
+
+
+if (isset($_GET['success'])) {
+    echo '<div class="alert alert-success">';
+    echo '<span class="alert-icon"></span>';
+    echo '<span>' . htmlspecialchars($_GET['success']) . '</span>';
+    echo '</div>';
+}
+?>
+            
             <form method="POST" action="process.php">
                 <div class="form-group">
-                    <label> Full Name:</label>
-                    <input type="text" name="name" placeholder="Enter Your Full Name" required>
-                </div>
-                
-                <div class="form-group">
-                    <label> Email:</label>
+                    <label> User-Email:</label>
                     <input type="email" name="email" placeholder="Enter Your Email" required>
                 </div>
                 
                 <div class="form-group">
                     <label> Password:</label>
-                    <input type="password" name="password" placeholder="Minimum 6 characters" required>
+                    <input type="password" name="password" placeholder="*********" required>
                 </div>
                 
-                <button type="submit" name="register" class="btn-register">Register</button>
+                <button type="submit" name="login" class="btn-login">Login</button>
                 
-                <div class="login-link">
-                    Already have an account? <a href="index.php">Login Here</a>
+                <div class="register-link">
+                    Don't have an account? <a href="register.php">SignUp Here</a>
                 </div>
             </form>
         </fieldset>

@@ -28,7 +28,7 @@ if(isset($_POST['register'])){
     $result = mysqli_query($connection, $query);
     
     if($result){
-        header("Location: index.html?success=Registration successful! Please login.");
+        header("Location: index.php?success=Registration successful! Please login.");
         exit();
     } else {
         header("Location: register.php?error=Registration failed. Please try again.");
@@ -51,7 +51,7 @@ if (isset($_POST['login'])) {
     }
     
     if (!empty($error)) {
-        header("Location: index.html?error=" . urlencode($error));
+        header("Location: index.php?error=" . urlencode($error));
         exit();
     }
     
@@ -75,7 +75,7 @@ if (isset($_POST['login'])) {
     }
     
     if (!empty($error)) {
-        header("Location: index.html?error=" . urlencode($error));
+        header("Location: index.php?error=" . urlencode($error));
         exit();
     }
 }
