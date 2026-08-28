@@ -5,9 +5,9 @@ include("db/connection.php");
 
 if(isset($_POST['register'])){
     
-    $username = $_POST['name'];
-    $email = $_POST['email'];
-    $password = $_POST['password'];
+    $username = mysqli_real_escape_string($connection, $_POST['name']);
+    $email = mysqli_real_escape_string($connection, $_POST['email']);
+    $password = mysqli_real_escape_string($connection, $_POST['password']);
     
     $error = "";
     if(empty($username)){
@@ -39,7 +39,7 @@ if(isset($_POST['register'])){
 
 if (isset($_POST['login'])) {
     
-    $email = $_POST['email'];
+    $email = mysqli_real_escape_string($connection, $_POST['email']);
     $password = $_POST['password'];
     
     $error = "";
